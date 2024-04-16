@@ -18,6 +18,13 @@ public:
         cout << "Horário criado com valor padrão." << endl;
     }
 
+    Time()
+    {
+        this->hour = 0;
+        this->minute = 0;
+        this->second = 0;
+    }
+
     int getHour();
     int getMinute();
     int getSecond();

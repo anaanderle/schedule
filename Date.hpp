@@ -18,6 +18,13 @@ public:
         cout << "Data criada com valor padrão." << endl;
     }
 
+    Date()
+    {
+        this->day = 1;
+        this->month = 1;
+        this->year = 2000;
+    }
+
     int getDay();
     int getMonth();
     int getYear();
