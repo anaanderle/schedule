@@ -65,26 +65,14 @@ Time Time::convertSecondToTime(int seconds) {
     return Time(hour, minute, second);
 }
 
-bool Time::operator==(Time &otherTime) {
-    return convertToSecond(*this) == this->convertToSecond(otherTime);
+bool Time::operator==(const Time& other) const {
+    return hour == other.hour && minute == other.minute && second == other.second;
 }
 
-bool Time::operator<(Time &otherTime) {
-    return convertToSecond(*this) < this->convertToSecond(otherTime);
+bool Time::operator<(const Time &other) const {
+    return hour < other.hour && minute < other.minute && second < other.second;
 }
 
-bool Time::operator>(Time &otherTime) {
-    return convertToSecond(*this) > this->convertToSecond(otherTime);
-}
-
-Time Time::operator+(Time &otherTime) {
-    return convertSecondToTime(convertToSecond(*this) + convertToSecond(otherTime));
-}
-
-Time Time::operator-(Time &otherTime) {
-    return convertSecondToTime(convertToSecond(*this) - convertToSecond(otherTime));
-}
-
-Time Time::operator*(int num) {
-    return convertSecondToTime(convertToSecond(*this) * num);
+bool Time::operator>(const Time &other) const {
+    return hour > other.hour && minute > other.minute && second > other.second;
 }

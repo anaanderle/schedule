@@ -19,12 +19,9 @@ public:
     int convertToSecond(Time &time);
     Time convertSecondToTime(int seconds);
 
-    bool operator==(Time &otherTime);
-    bool operator<(Time &otherTime);
-    bool operator>(Time &otherTime);
-    Time operator+(Time &otherTime);
-    Time operator-(Time &otherTime);
-    Time operator*(int num);
+    bool operator==(const Time &otherTime) const;
+    bool operator<(const Time &otherTime) const;
+    bool operator>(const Time &otherTime) const;
 private:
     int hour=0;
     int minute=0;

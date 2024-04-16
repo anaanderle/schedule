@@ -5,6 +5,8 @@
 #include "Time.cpp"
 #include "Appointment.hpp"
 #include "Appointment.cpp"
+#include "Schedule.hpp"
+#include "Schedule.cpp"
 
 
 int main() {
@@ -20,5 +22,10 @@ int main() {
 
     Appointment appointment1 = Appointment("Reunião", "João", Time(16, 0, 0), Time(16, 30, 0), Date(30, 9, 2003));
     appointment1.print();
+
+    Schedule schedule = Schedule();
+    schedule.addAppointment(appointment1);
+    schedule.printAppointments();
+    
     return 0;
 }

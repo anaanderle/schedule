@@ -10,7 +10,13 @@ horário de fim (ambos representados por outra classe) e data (também represent
 
 using namespace std;
 
-
+Appointment::Appointment(){
+    this->title = "";
+    this->responsiblePerson = "";
+    this->startTime = Time();
+    this->endTime = Time();
+    this->eventDate = Date();
+}
 
 Appointment::Appointment(string title, string responsiblePerson, Time startTime, Time endTime, Date eventDate){
     this->title = title;
@@ -55,6 +61,27 @@ Time Appointment::getDuration(){
     
     Time duration = Time(hours, minutes, 0);
     return duration;
+}
+
+//setters
+void Appointment::setTitle(string title){
+    this->title = title;
+}
+
+void Appointment::setResponsiblePerson(string responsiblePerson){
+    this->responsiblePerson = responsiblePerson;
+}
+
+void Appointment::setStartTime(Time startTime){
+    this->startTime = startTime;
+}
+
+void Appointment::setEndTime(Time endTime){
+    this->endTime = endTime;
+}
+
+void Appointment::setEventDate(Date eventDate){
+    this->eventDate = eventDate;
 }
 
 void Appointment::print(){
