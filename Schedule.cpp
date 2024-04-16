@@ -27,16 +27,11 @@ void Schedule::addAppointment(const Appointment& newAppointment) {
     for(const auto& appointment : appointments){
         if(!Schedule::hasConflict(appointments, newAppointment)){
             appointments.push_back(newAppointment);
-            return;
+            break;
         }
-        else{
-            cout << "O compromisso tem um conflito com outro existente." << endl;
-            return;
-        }
-        
+
+        cout << "O compromisso tem um conflito com outro existente." << endl;
     }
-    cout << "ALGO DEU MUITO ERRADO EM ADICIONAR O COMPROMISSO" << endl;
-    return;
 }
 
 void Schedule::printAppointments(){
@@ -65,18 +60,19 @@ void Schedule::printAppointments(Date date, Time time){
 }
 
 bool Schedule::hasConflict(vector<Appointment> appointments, Appointment newAppointment){
-    for(auto& appointment : appointments){
-        if(appointment.getEventDate() == newAppointment.getEventDate()){
-            if(appointment.getStartTime() == newAppointment.getStartTime() || appointment.getEndTime() == newAppointment.getEndTime()){
-                return true;
+    for(Appointment& appointment1 : appointments){
+        for(Appointment& appointment2 : appointments){
+            if(appointment1.getEventDate() != appointment2.getEventDate()) {
+                break;
             }
-            else if(appointment.getStartTime() < newAppointment.getStartTime() && appointment.getEndTime() > newAppointment.getStartTime()){
-                return true;
+
+            if(appointment1.getEndTime() < appointment2.getStartTime() || appointment1.getStartTime() > appointment2.getEndTime()){
+                break;
             }
-            else if(appointment.getStartTime() < newAppointment.getEndTime() && appointment.getEndTime() > newAppointment.getEndTime()){
-                return true;
-            }
+
+            return false;
         }
     }
-    return false;
+
+    return true;
 }

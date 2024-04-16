@@ -19,7 +19,6 @@ Date::Date(){
     this->day = 1;
     this->month = 1;
     this->year = 2000;
-
 }
 
 int Date::getDay(){
@@ -80,5 +79,9 @@ bool Date::validDate(int day, int month, int year) {
 
 bool Date::operator==(const Date& other) const {
     return day == other.day && month == other.month && year == other.year;
+}
+
+bool Date::operator!=(const Date& other) const {
+    return day != other.day || month != other.month || year != other.year;
 }
 

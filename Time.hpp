@@ -15,17 +15,20 @@ public:
     int getSecond();
     bool setTime(int hour, int minute, int second);
     void print();
-    bool validTime(int hour, int minute, int second);
-    int convertToSecond(Time &time);
-    Time convertSecondToTime(int seconds);
 
     bool operator==(const Time &otherTime) const;
     bool operator<(const Time &otherTime) const;
     bool operator>(const Time &otherTime) const;
+    Time operator+(const Time &otherTime) const;
+    Time operator-(const Time &otherTime) const;
+    Time operator*(int num) const;
 private:
     int hour=0;
     int minute=0;
     int second=0;
+    int convertToSecond() const;
+    Time convertSecondToTime(int seconds) const;
+    bool validTime(int hour, int minute, int second);
 };
 
 

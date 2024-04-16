@@ -51,16 +51,7 @@ Date Appointment::getEventDate(){
 }
 
 Time Appointment::getDuration(){
-    int hours = this->endTime.getHour() - this->startTime.getHour();
-    int minutes = this->endTime.getMinute() - this->startTime.getMinute();
-
-    if(minutes < 0){
-        hours--;
-        minutes += 60;
-    }
-    
-    Time duration = Time(hours, minutes, 0);
-    return duration;
+    return  this->getEndTime() - this->getStartTime();
 }
 
 //setters
@@ -96,5 +87,4 @@ void Appointment::print(){
     cout << "Duração: ";
     this->getDuration().print();
 }
-
 

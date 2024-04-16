@@ -28,7 +28,7 @@ int Time::getMinute(){
     return this->minute;
 }
 
-int Time::getSecond(){
+int Time::getSecond() {
     return this->second;
 }
 
@@ -53,26 +53,38 @@ bool Time::validTime(int hour, int minute, int second) {
     return hour >= 0 && hour <= 24 && minute >= 0 && minute <= 59 && second >= 0 && second <= 59;
 }
 
-int Time::convertToSecond(Time &time){
-    return time.getSecond() + (time.getHour() * 60 + time.getMinute()) * 60;
+Time Time::convertSecondToTime(int seconds) const {
+    int hour = seconds / (60 * 60);
+    int minuteRest = seconds % (60 * 60);
+    int minute = minuteRest / 60;
+    int secondRest = minute % 60;
+    return Time(hour, minute, secondRest);
 }
 
-Time Time::convertSecondToTime(int seconds) {
-    int hour = seconds % (60 * 60);
-    int minute = (seconds - hour) % 60;
-    int second = seconds - hour - minute;
-
-    return Time(hour, minute, second);
+int Time::convertToSecond() const {
+    return this->second + (this->hour * 60 + this->minute) * 60;
 }
 
 bool Time::operator==(const Time& other) const {
-    return hour == other.hour && minute == other.minute && second == other.second;
+    return this->convertToSecond() == other.convertToSecond();
 }
 
 bool Time::operator<(const Time &other) const {
-    return hour < other.hour && minute < other.minute && second < other.second;
+    return this->convertToSecond() > other.convertToSecond();
 }
 
 bool Time::operator>(const Time &other) const {
-    return hour > other.hour && minute > other.minute && second > other.second;
+    return this->convertToSecond() < other.convertToSecond();
+}
+
+Time Time::operator+(const Time &otherTime) const {
+    return convertSecondToTime(this->convertToSecond() + otherTime.convertToSecond());
+}
+
+Time Time::operator-(const Time &otherTime) const {
+    return convertSecondToTime(this->convertToSecond() - otherTime.convertToSecond());
+}
+
+Time Time::operator*(const int num) const {
+    return convertSecondToTime(this->convertToSecond() * num);
 }
