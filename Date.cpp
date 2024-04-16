@@ -20,7 +20,6 @@ Date::Date(){
     this->month = 1;
     this->year = 2000;
 
-    cout << "ERRO : Data criada com valor padrão." << endl;
 }
 
 int Date::getDay(){

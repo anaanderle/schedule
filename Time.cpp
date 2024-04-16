@@ -8,6 +8,8 @@ Time::Time(int hour, int minute, int second){
         this->minute = minute;
         this->second = second;
         return;
+    }else{
+        cout << "ERRO : Horário inválido" << endl;
     }
 }
 
@@ -15,8 +17,6 @@ Time::Time(){
     this->hour = 0;
     this->minute = 0;
     this->second = 0;
-
-    cout << "Horário criado com valor padrão." << endl;
 }
 
 

@@ -22,13 +22,14 @@ int main() {
 
     Schedule schedule = Schedule();
     Appointment appointment1 = Appointment("Reunião", "João", Time(16, 0, 0), Time(16, 30, 0), Date(30, 9, 2003));
-    appointment1.print();
+    Appointment appointment3 = Appointment("academia", "marcos", Time(14, 30, 0), Time(15, 30, 0), Date(30, 9, 2003));
 
     schedule.addAppointment(appointment1);
-    schedule.printAppointments();
+    
 
-    Appointment appointment2 = Appointment("Reunião", "João", Time(16, 0, 0), Time(16, 30, 0), Date(30, 9, 2003));
+    Appointment appointment2 = Appointment("festa", "carol", Time(16, 0, 0), Time(16, 30, 0), Date(30, 9, 2003));
     schedule.addAppointment(appointment2);
+    schedule.addAppointment(appointment3);
     schedule.printAppointments();
     
     return 0;

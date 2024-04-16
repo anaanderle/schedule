@@ -40,9 +40,12 @@ void Schedule::addAppointment(const Appointment& newAppointment) {
 }
 
 void Schedule::printAppointments(){
+    cout << "Compromissos: " << endl;
     for(auto& appointment : appointments){
         appointment.print();
+        cout << "=======================" << endl;
     }
+    cout << "Fim dos compromissos." << endl;
 }
 
 void Schedule::printAppointments(Date date){
