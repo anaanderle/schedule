@@ -12,12 +12,16 @@ using namespace std;
 
 
 
-Appointment::Appointment(string title, string responsiblePerson, Time startTime, Time endTime, Date date){
+Appointment::Appointment(string title, string responsiblePerson, Time startTime, Time endTime, Date eventDate){
     this->title = title;
     this->responsiblePerson = responsiblePerson;
     this->startTime = startTime;
     this->endTime = endTime;
-    this->date = date;
+    this->eventDate = eventDate;
+
+    if(this->startTime.getHour() > this->endTime.getHour() || (this->startTime.getHour() == this->endTime.getHour() && this->startTime.getMinute() > this->endTime.getMinute())){
+        cout << "ERRO : Horário de início maior que horário de fim" << endl;
+    }
 }
 
 string Appointment::getTitle(){
@@ -36,8 +40,8 @@ Time Appointment::getEndTime(){
     return this->endTime;
 }
 
-Date Appointment::getDate(){
-    return this->date;
+Date Appointment::getEventDate(){
+    return this->eventDate;
 }
 
 Time Appointment::getDuration(){
@@ -57,7 +61,7 @@ void Appointment::print(){
     cout << "Título: " << this->title << endl;
     cout << "Responsável: " << this->responsiblePerson << endl;
     cout << "Data: ";
-    this->date.print();
+    this->eventDate.print();
     cout << "Horário de início: ";
     this->startTime.print();
     cout << "Horário de fim: ";
@@ -65,6 +69,5 @@ void Appointment::print(){
     cout << "Duração: ";
     this->getDuration().print();
 }
-
 
 

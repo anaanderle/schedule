@@ -7,24 +7,9 @@ using namespace std;
 
 class Time {
 public:
-    Time(int hour, int minute, int second){
-        if(validTime(hour, minute, second)){
-            this->hour = hour;
-            this->minute = minute;
-            this->second = second;
-            return;
-        }
-
-        cout << "Horário criado com valor padrão." << endl;
-    }
-
-    Time()
-    {
-        this->hour = 0;
-        this->minute = 0;
-        this->second = 0;
-    }
-
+    Time(int hour, int minute, int second);
+    Time();
+    
     int getHour();
     int getMinute();
     int getSecond();

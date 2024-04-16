@@ -2,6 +2,24 @@
 
 using namespace std;
 
+Time::Time(int hour, int minute, int second){
+    if(validTime(hour, minute, second)){
+        this->hour = hour;
+        this->minute = minute;
+        this->second = second;
+        return;
+    }
+}
+
+Time::Time(){
+    this->hour = 0;
+    this->minute = 0;
+    this->second = 0;
+
+    cout << "Horário criado com valor padrão." << endl;
+}
+
+
 int Time::getHour(){
     return this->hour;
 }

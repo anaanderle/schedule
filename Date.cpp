@@ -3,6 +3,26 @@
 
 using namespace std;
 
+Date::Date(int day, int month, int year){
+    if(validDate(day, month, year)){
+        this->day = day;
+        this->month = month;
+        this->year = year;
+        return;
+    }
+    else {
+        cout << "ERRO : Data inválida" << endl;
+    }
+}
+
+Date::Date(){
+    this->day = 1;
+    this->month = 1;
+    this->year = 2000;
+
+    cout << "ERRO : Data criada com valor padrão." << endl;
+}
+
 int Date::getDay(){
     return this->day;
 }
@@ -55,5 +75,7 @@ bool Date::validDate(int day, int month, int year) {
             return day <= 31;
         }
     }
+
+    return false;
 }
 

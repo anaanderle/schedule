@@ -7,23 +7,9 @@ using namespace std;
 
 class Date {
 public:
-    Date(int day, int month, int year){
-        if(validDate(day, month, year)){
-            this->day = day;
-            this->month = month;
-            this->year = year;
-            return;
-        }
-
-        cout << "Data criada com valor padrão." << endl;
-    }
-
-    Date()
-    {
-        this->day = 1;
-        this->month = 1;
-        this->year = 2000;
-    }
+    
+    Date(int day, int month, int year);
+    Date();
 
     int getDay();
     int getMonth();

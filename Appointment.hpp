@@ -11,12 +11,12 @@ using namespace std;
 class Appointment
 {
 public:
-    Appointment(string title, string responsiblePerson, Time startTime, Time endTime, Date date);
+    Appointment(string title, string responsiblePerson, Time startTime, Time endTime, Date eventDate);
     string getTitle();
     string getResponsiblePerson();
     Time getStartTime();
     Time getEndTime();
-    Date getDate();
+    Date getEventDate();
     Time getDuration();
     void print();
 private:
@@ -24,7 +24,7 @@ private:
     string responsiblePerson;
     Time startTime;
     Time endTime;
-    Date date;
+    Date eventDate;
 };
 
 #endif
