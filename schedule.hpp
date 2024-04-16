@@ -12,7 +12,6 @@ using namespace std;
 class Schedule {
 public:
     Schedule();
-    void addAppointment(Appointment appointment);
     void printAppointments();
     void printAppointments(Date date);
     void printAppointments(Date date, Time time);
