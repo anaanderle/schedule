@@ -1,22 +1,15 @@
 #include <iostream>
-#include "Date.hpp"
-#include "Date.cpp"
-#include "Time.hpp"
-#include "Time.cpp"
-#include "Appointment.hpp"
-#include "Appointment.cpp"
 #include "Schedule.hpp"
-#include "Schedule.cpp"
 
 
 int main() {
-    //std::cout << "Hello, World!" << std::endl;
+    std::cout << "Hello, World!" << std::endl;
 
-    // date1.print();
-    // date1.setDate(25, 9, 2003);
-    // date1.print();
-    // date1.setDate(29, 2, 2023);
-    // date1.print();
+//     date1.print();
+//     date1.setDate(25, 9, 2003);
+//     date1.print();
+//     date1.setDate(29, 2, 2023);
+//     date1.print();
 
 
 
@@ -25,7 +18,7 @@ int main() {
     Appointment appointment3 = Appointment("academia", "marcos", Time(14, 30, 0), Time(15, 30, 0), Date(30, 9, 2003));
 
     schedule.addAppointment(appointment1);
-    
+
 
     Appointment appointment2 = Appointment("festa", "carol", Time(16, 0, 0), Time(16, 30, 0), Date(30, 9, 2003));
     schedule.addAppointment(appointment2);
