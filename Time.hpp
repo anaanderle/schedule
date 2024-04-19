@@ -17,8 +17,11 @@ public:
     void print();
 
     bool operator==(const Time &otherTime) const;
+    bool operator!=(const Time &otherTime) const;
     bool operator<(const Time &otherTime) const;
+    bool operator<=(const Time &otherTime) const;
     bool operator>(const Time &otherTime) const;
+    bool operator>=(const Time &otherTime) const;
     Time operator+(const Time &otherTime) const;
     Time operator-(const Time &otherTime) const;
     Time operator*(int num) const;

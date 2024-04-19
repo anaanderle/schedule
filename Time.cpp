@@ -8,9 +8,9 @@ Time::Time(int hour, int minute, int second){
         this->minute = minute;
         this->second = second;
         return;
-    }else{
-        cout << "ERRO : Horário inválido" << endl;
     }
+
+    cout << "ERRO : Horário inválido" << endl;
 }
 
 Time::Time(){
@@ -57,7 +57,7 @@ Time Time::convertSecondToTime(int seconds) const {
     int hour = seconds / (60 * 60);
     int minuteRest = seconds % (60 * 60);
     int minute = minuteRest / 60;
-    int secondRest = minute % 60;
+    int secondRest = minuteRest % 60;
     return Time(hour, minute, secondRest);
 }
 
@@ -69,12 +69,24 @@ bool Time::operator==(const Time& other) const {
     return this->convertToSecond() == other.convertToSecond();
 }
 
+bool Time::operator!=(const Time& other) const {
+    return this->convertToSecond() != other.convertToSecond();
+}
+
 bool Time::operator<(const Time &other) const {
-    return this->convertToSecond() > other.convertToSecond();
+    return this->convertToSecond() < other.convertToSecond();
+}
+
+bool Time::operator<=(const Time &other) const {
+    return this->convertToSecond() <= other.convertToSecond();
 }
 
 bool Time::operator>(const Time &other) const {
-    return this->convertToSecond() < other.convertToSecond();
+    return this->convertToSecond() > other.convertToSecond();
+}
+
+bool Time::operator>=(const Time &other) const {
+    return this->convertToSecond() >= other.convertToSecond();
 }
 
 Time Time::operator+(const Time &otherTime) const {

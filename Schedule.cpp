@@ -1,37 +1,28 @@
-/*
-Uma classe para representar a agenda, que recebe as instâncias dos 
-compromissos e realiza operações como listar compromissos, e verificar conflito 
-de compromissos. Dois compromissos não podem estar sobrepostos (usar 
-sobrecarga de operadores para comparar)
-*/
-
 #include <iostream>
 #include "Schedule.hpp"
 #include <vector>
 #include "Appointment.hpp"
 #include "Date.hpp"
 #include "Time.hpp"
+
 using namespace std;
 
 
 Schedule::Schedule(){
-    vector<Appointment> appointments = {};
+    this->appointments = {};
+}
+
+Schedule::Schedule(vector<Appointment> appointments){
+    this->appointments = appointments;
 }
 
 void Schedule::addAppointment(const Appointment& newAppointment) {
-    if(appointments.size() == 0){
-        appointments.push_back(newAppointment);
+    if(!Schedule::hasConflict(newAppointment)){
+        this->appointments.push_back(newAppointment);
         return;
     }
 
-    for(const auto& appointment : appointments){
-        if(!Schedule::hasConflict(appointments, newAppointment)){
-            appointments.push_back(newAppointment);
-            break;
-        }
-
-        cout << "O compromisso tem um conflito com outro existente." << endl;
-    }
+    cout << "O compromisso tem um conflito com outro existente." << endl;
 }
 
 void Schedule::printAppointments(){
@@ -53,26 +44,22 @@ void Schedule::printAppointments(Date date){
 
 void Schedule::printAppointments(Date date, Time time){
     for(auto& appointment : appointments){
-        if(appointment.getEventDate() == date && appointment.getStartTime() == time){
+        if(appointment.getEventDate() == date && appointment.getStartTime() <= time && appointment.getEndTime() >= time){
             appointment.print();
         }
     }
 }
 
-bool Schedule::hasConflict(vector<Appointment> appointments, Appointment newAppointment){
-    for(Appointment& appointment1 : appointments){
-        for(Appointment& appointment2 : appointments){
-            if(appointment1.getEventDate() != appointment2.getEventDate()) {
-                break;
-            }
-
-            if(appointment1.getEndTime() < appointment2.getStartTime() || appointment1.getStartTime() > appointment2.getEndTime()){
-                break;
-            }
-
-            return false;
+bool Schedule::hasConflict(Appointment newAppointment){
+    for(Appointment& appointment : appointments){
+        if(appointment.getEventDate() != newAppointment.getEventDate()){
+            break;
         }
+        if(appointment.getEndTime() <= newAppointment.getStartTime() || appointment.getStartTime() >= newAppointment.getEndTime()){
+            break;
+        }
+        return true;
     }
 
-    return true;
+    return false;
 }

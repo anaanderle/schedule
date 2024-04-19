@@ -12,10 +12,11 @@ using namespace std;
 class Schedule {
 public:
     Schedule();
+    Schedule(vector<Appointment> appointments);
     void printAppointments();
     void printAppointments(Date date);
     void printAppointments(Date date, Time time);
-    bool hasConflict(vector<Appointment> appointments, Appointment newAppointment);
+    bool hasConflict(Appointment newAppointment);
     void addAppointment(const Appointment& newAppointment);
 private:
     vector<Appointment> appointments;
