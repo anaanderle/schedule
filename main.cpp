@@ -58,19 +58,11 @@ int main() {
     defaultTime.print();
     cout << "Resultado:" << endl;
     cout << "Os horários são " << (defaultTime == Time() ? "iguais" : "diferentes") << endl;
-    invalidTime.print();
-    cout << "Resultado:" << endl;
-    cout << "Os horários são " << (invalidTime == Time() ? "iguais" : "diferentes") << endl;
-
-    cout << "Comparação de igualdade com valores padrão:" << endl;
-    defaultTime.print();
-    cout << "Resultado:" << endl;
-    cout << "Os horários são " << (defaultTime == Time() ? "iguais" : "diferentes") << endl;
     cout << "Os horários são realmente " << (defaultTime != Time() ? "diferentes" : "iguais") << endl;
     invalidTime.print();
     cout << "Resultado:" << endl;
     cout << "Os horários são " << (invalidTime == Time() ? "iguais" : "diferentes") << endl;
-    cout << "Os horários são realmente " << (invalidTime == Time() ? "diferentes" : "iguais") << endl;
+    cout << "Os horários são realmente " << (invalidTime != Time() ? "diferentes" : "iguais") << endl;
 
     cout << "Comparação de igualdade entre:" << endl;
     defaultTime.print();
